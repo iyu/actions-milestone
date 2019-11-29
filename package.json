@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "actions-milestone",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Add Milestone to PRs",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -10,15 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/iyu/actions-milestone.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "iyu",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iyu/actions-milestone/issues"
+  },
+  "homepage": "https://github.com/iyu/actions-milestone#readme",
   "dependencies": {
     "@actions/core": "^1.2.0"
   },
