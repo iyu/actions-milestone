@@ -1,4 +1,4 @@
-[![GitHub Actions status][https://github.com/iyu/actions-milestone/workflows/test-local/badge.svg]][https://github.com/iyu/actions-milestone]
+[![GitHub Actions status](https://github.com/iyu/actions-milestone/workflows/test-local/badge.svg)](https://github.com/iyu/actions-milestone)
 
 # ActionsMilestone
 
