@@ -1,4 +1,4 @@
-[![GitHub Actions status](https://github.com/iyu/actions-milestone/workflows/test-local/badge.svg)](https://github.com/iyu/actions-milestone)
+[![GitHub Actions status](https://github.com/iyu/actions-milestone/workflows/Lint%20and%20Test/badge.svg)](https://github.com/iyu/actions-milestone)
 
 # ActionsMilestone
 
@@ -25,7 +25,7 @@ The added milestone.
 ### `.github/milestone.yml`
 
 ```yaml
-into-branche:
+into-branch:
   - "(master)"
   - "releases\\/(v\\d+)"
 
