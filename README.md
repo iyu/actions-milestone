@@ -25,11 +25,11 @@ The added milestone.
 ### `.github/milestone.yml`
 
 ```yaml
-into-branch:
+base-branch:
   - "(master)"
   - "releases\\/(v\\d+)"
 
-branch-name:
+head-branch:
   - "feature\\/(v\\d+)\\/.+"
 ```
 
