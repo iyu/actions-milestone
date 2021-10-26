@@ -1,6 +1,6 @@
-[![GitHub Actions status](https://github.com/iyu/actions-milestone/workflows/Lint%20and%20Test/badge.svg)](https://github.com/iyu/actions-milestone)
+[![GitHub Actions status](https://github.com/geoadmin/action-add-to-milestone/workflows/Lint%20and%20Test/badge.svg)](https://github.com/geoadmin/action-add-to-milestone)
 
-# ActionsMilestone
+# Action Add To Milestone
 
 This action add milestone to PRs.:hammer:
 

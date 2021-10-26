@@ -8,6 +8,7 @@
     "build": "tsc",
     "lint": "eslint --ext .ts,.js .",
     "test": "jest",
+    "package": "ncc build --source-map --license licenses.txt",
     "preversion": "npm ci && npm run build && npm ci --production && git add node_modules lib -f"
   },
   "repository": {
@@ -36,6 +37,7 @@
     "@types/node": "^12.12.14",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "@vercel/ncc": "^0.31.1",
     "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",

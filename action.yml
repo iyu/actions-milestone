@@ -15,4 +15,4 @@ outputs:
     description: 'The Added Milestone'
 runs:
   using: 'node12'
-  main: 'lib/main.js'
+  main: 'dist/index.js'
