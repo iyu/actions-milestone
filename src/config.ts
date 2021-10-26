@@ -1,3 +1,4 @@
+import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as yaml from 'js-yaml';
 
@@ -7,11 +8,13 @@ export interface ConfigObject {
 }
 
 export const getContents = async (client: github.GitHub, configPath: string): Promise<string> => {
+  const [configOwner, configRepo] = core.getInput('configuration-repo').split('/');
+  const [_configPath, configSha] = configPath.split('@');
   const response = await client.repos.getContents({
-    owner: github.context.repo.owner,
-    repo: github.context.repo.repo,
-    path: configPath,
-    ref: github.context.sha,
+    owner: configOwner || github.context.repo.owner,
+    repo: configRepo || github.context.repo.repo,
+    path: _configPath,
+    ref: configSha || github.context.sha,
   });
   return Buffer.from((response.data as { content: string }).content, 'base64').toString();
 };
