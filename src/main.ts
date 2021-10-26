@@ -40,11 +40,6 @@ async function run() {
     head: { ref: headBranch },
   } = pullRequest;
 
-  if (milestone) {
-    console.log('Milestone already exists, exiting');
-    return;
-  }
-
   const client = new github.GitHub(token);
 
   const configObject = await config(client, configPath);
@@ -64,6 +59,11 @@ async function run() {
   });
   const { number: milestoneNumber } = milestones.data.find(({ title }) => title === addMilestone)
     || {};
+
+  if (milestone === milestoneNumber) {
+    console.log('Milestone already exists, exiting');
+    return;
+  }
 
   if (milestoneNumber) {
     await client.issues.update({
