@@ -7,6 +7,9 @@ inputs:
   configuration-path:
     description: 'The path for the milestone configurations'
     default: '.github/milestone.yml'
+  configuration-repo:
+    description: 'Configuration repository'
+    default: ''
 outputs:
   milestone:
     description: 'The Added Milestone'
