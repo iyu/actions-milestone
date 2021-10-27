@@ -14,6 +14,14 @@ This action add milestone to PRs.:hammer:
 
 **required** The path for the milestone configurations. Default `".github/milestone.yml"`
 
+*Note if the configuration is located outside of the repository, like it could be if used in a reusable workflow, the reference of
+the configuration file must be defined with the `@` syntax, e.g. `".github/milestone.yml@master"`*
+
+### `configuration-repo`
+
+The repository where the configuration is located (default to the same repos as the action). This
+input is needed when the action is used inside a reusable workflow outside of the action caller repository.
+
 ## Outputs
 
 ### `milestone`
