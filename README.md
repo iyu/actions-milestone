@@ -64,4 +64,5 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/milestone.yml
+          silent: true
 ```
