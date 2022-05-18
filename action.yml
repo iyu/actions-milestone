@@ -10,6 +10,9 @@ inputs:
   configuration-repo:
     description: 'Configuration repository'
     default: ''
+  silent:
+    description: 'Be silent in case of any failure'
+    default: false
 outputs:
   milestone:
     description: 'The Added Milestone'
