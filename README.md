@@ -22,6 +22,10 @@ the configuration file must be defined with the `@` syntax, e.g. `".github/miles
 The repository where the configuration is located (default to the same repos as the action). This
 input is needed when the action is used inside a reusable workflow outside of the action caller repository.
 
+### `silent`
+
+Be silent in case of any failures.
+
 ## Outputs
 
 ### `milestone`
@@ -60,4 +64,5 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/milestone.yml
+          silent: true
 ```

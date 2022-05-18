@@ -26,10 +26,15 @@ interface PullRequestWebhookPayload extends WebhookPayload {
 async function run() {
   const token = core.getInput('repo-token', { required: true });
   const configPath = core.getInput('configuration-path', { required: true });
+  const silent = core.getBooleanInput('silent');
 
   const pullRequest = (github.context.payload as PullRequestWebhookPayload).pull_request;
   if (!pullRequest) {
-    console.log('Could not get pull_request from context, exiting');
+    const message = 'Could not get pull_request from context, exiting';
+    console.log(message);
+    if (!silent) {
+      throw Error(message);
+    }
     return;
   }
 
@@ -74,7 +79,11 @@ async function run() {
     });
     core.setOutput('milestone', addMilestone);
   } else {
-    console.log(`Milestone not found, Please create it first "${addMilestone}".`);
+    const message = `Milestone not found, Please create it first "${addMilestone}".`;
+    console.log(message);
+    if (!silent) {
+      throw Error(message);
+    }
   }
 }
 
