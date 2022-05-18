@@ -18,4 +18,5 @@ jobs:
       with: 
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         configuration-path: .github/milestone.yml
+        silent: ${{ github.event_name == "pull_request" }}
 
