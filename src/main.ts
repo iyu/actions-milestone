@@ -77,8 +77,8 @@ async function run() {
     }
   }
 
-  const client = new github.GitHub(token);
-  const configObject = await config(client, configPath);
+  const octokit = github.getOctokit(token);
+  const configObject = await config(octokit, configPath);
   console.log('configObject base-branch', configObject.baseBranchList);
   console.log('configObject head-branch', configObject.headBranchList);
 
@@ -93,7 +93,7 @@ async function run() {
 
     if (!currMilestone || force) {
       console.log(`Update of milestone from ${currMilestone?.title} to ${addMilestone}`);
-      const milestones = await client.issues.listMilestonesForRepo({
+      const milestones = await octokit.rest.issues.listMilestones({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
       });
@@ -102,7 +102,7 @@ async function run() {
         error(`Milestone "${addMilestone}" not found, Please create it first.`);
         return;
       }
-      await client.issues.update({
+      await octokit.rest.issues.update({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         issue_number: prNumber,
@@ -114,7 +114,7 @@ async function run() {
     }
   } else if (clear && currMilestone) {
     console.log(`Clear milestone ${currMilestone.title} due to clear flag`);
-    await client.issues.update({
+    await octokit.rest.issues.update({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       issue_number: prNumber,

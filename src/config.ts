@@ -1,16 +1,20 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as yaml from 'js-yaml';
+import { GitHub } from '@actions/github/lib/utils';
 
 export interface ConfigObject {
   baseBranchList: RegExp[];
   headBranchList: RegExp[];
 }
 
-export const getContents = async (client: github.GitHub, configPath: string): Promise<string> => {
+export const getContents = async (
+  octokit: InstanceType<typeof GitHub>,
+  configPath: string,
+): Promise<string> => {
   const [configOwner, configRepo] = core.getInput('configuration-repo').split('/');
   const [_configPath, configSha] = configPath.split('@');
-  const response = await client.repos.getContents({
+  const response = await octokit.rest.repos.getContent({
     owner: configOwner || github.context.repo.owner,
     repo: configRepo || github.context.repo.repo,
     path: _configPath,
@@ -20,10 +24,10 @@ export const getContents = async (client: github.GitHub, configPath: string): Pr
 };
 
 export const parse = (text: string) => {
-  const config: {
+  const config = (yaml.load(text) || {}) as {
     'base-branch'?: string[],
     'head-branch'?: string[],
-  } = yaml.safeLoad(text) || {};
+  };
 
   const result: ConfigObject = {
     baseBranchList: [],
@@ -62,8 +66,11 @@ export const match = (
   return hit;
 };
 
-export default async (client: github.GitHub, configPath: string): Promise<ConfigObject> => {
-  const configText = await getContents(client, configPath);
+export default async (
+  octokit: InstanceType<typeof GitHub>,
+  configPath: string,
+): Promise<ConfigObject> => {
+  const configText = await getContents(octokit, configPath);
 
   return parse(configText);
 };
