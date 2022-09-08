@@ -13,9 +13,17 @@ inputs:
   silent:
     description: 'Be silent in case of any failure'
     default: false
+  force:
+    description: 'Force update of existing milestone if needed'
+    default: false
+  clear:
+    description: 'Clear existing milestone when no match is found from the configuration'
+    default: false
 outputs:
   milestone:
-    description: 'The Added Milestone'
+    description: 'The milestone added to the PR'
+  previous:
+    description: 'Previous milestone attached to the PR'
 runs:
   using: 'node12'
   main: 'lib/main.js'
