@@ -26,11 +26,23 @@ input is needed when the action is used inside a reusable workflow outside of th
 
 Be silent in case of any failures.
 
+### `force`
+
+Overwrite the PR's milestone if it is already set and doesn't match the one found from the config. NOTE: do nothing if there is no milestone match from the config.
+
+### `clear`
+
+Clear the PR's milestone if it is already set and there is no match from the configuration.
+
 ## Outputs
 
 ### `milestone`
 
-The added milestone.
+The added/modified milestone or `null` when no milestone is set.
+
+### `previous`
+
+Previous milestone or `null` when no milestone was set.
 
 ## Example usage
 
