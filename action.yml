@@ -25,5 +25,5 @@ outputs:
   previous:
     description: 'Previous milestone attached to the PR'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'lib/main.js'
